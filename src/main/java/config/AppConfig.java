@@ -1,7 +1,7 @@
 package config;
 
-import javax.sql.DataSource;
 import java.util.Properties;
+import javax.sql.DataSource;
 import model.User;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;

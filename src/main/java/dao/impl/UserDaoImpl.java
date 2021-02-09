@@ -38,7 +38,6 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-
     @Override
     public List<User> listUsers() {
         try (Session session = sessionFactory.openSession()) {
