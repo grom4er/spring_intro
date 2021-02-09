@@ -1,9 +1,11 @@
-package Dao.impl;
+package dao.impl;
 
-import Dao.UserDao;
+import dao.UserDao;
 import java.util.List;
 import model.User;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserDaoImpl implements UserDao {
     @Override
     public void add(User user) {
