@@ -21,8 +21,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Optional<User> getById(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            User user = session.get(User.class, id);
-            return Optional.ofNullable(user);
+            return Optional.ofNullable(session.get(User.class, id));
         } catch (Exception e) {
             throw new DataProcessException("Can't get user by id: " + id + ".", e);
         }

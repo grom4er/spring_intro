@@ -13,5 +13,4 @@ public class UserResponseDto {
     public void setName(String name) {
         this.name = name;
     }
-
 }

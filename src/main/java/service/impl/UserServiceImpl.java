@@ -2,6 +2,7 @@ package service.impl;
 
 import dao.UserDao;
 import java.util.List;
+import java.util.Optional;
 import model.User;
 import org.springframework.stereotype.Service;
 import service.UserService;
@@ -21,10 +22,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        if (userDao.getById(id).isEmpty()) {
+        Optional<User> user = userDao.getById(id);
+        if (user.isEmpty()) {
             return null;
         }
-        return userDao.getById(id).get();
+        return user.get();
     }
 
     @Override
