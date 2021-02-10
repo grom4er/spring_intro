@@ -20,6 +20,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserById(Long id) {
+        if (userDao.getById(id).isEmpty()) {
+            return null;
+        }
+        return userDao.getById(id).get();
+    }
+
+    @Override
     public List<User> listUsers() {
         return userDao.getAllUsers();
     }
