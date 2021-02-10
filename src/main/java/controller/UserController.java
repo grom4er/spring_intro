@@ -47,5 +47,4 @@ public class UserController {
                 .forEach(userService::add);
         return "Inject complete";
     }
-
 }
