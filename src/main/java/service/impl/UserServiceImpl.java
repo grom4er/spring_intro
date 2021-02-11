@@ -1,8 +1,8 @@
 package service.impl;
 
 import dao.UserDao;
+import exception.DataProcessException;
 import java.util.List;
-import java.util.Optional;
 import model.User;
 import org.springframework.stereotype.Service;
 import service.UserService;
@@ -22,11 +22,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        Optional<User> user = userDao.getById(id);
-        if (user.isEmpty()) {
-            return null;
-        }
-        return user.get();
+        return userDao.getById(id).orElseThrow(
+                () -> new DataProcessException("Can't take user by id"));
     }
 
     @Override

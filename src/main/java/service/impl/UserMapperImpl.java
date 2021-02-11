@@ -10,12 +10,7 @@ public class UserMapperImpl implements UserMapper {
     public UserResponseDto toDto(User user) {
         UserResponseDto userDto = new UserResponseDto();
         userDto.setName(user.getName());
+        userDto.setId(user.getId());
         return userDto;
-    }
-
-    public User fromDto(UserResponseDto inputUserDto) {
-        User user = new User();
-        user.setName(inputUserDto.getName());
-        return user;
     }
 }
