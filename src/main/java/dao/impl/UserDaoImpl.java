@@ -3,6 +3,7 @@ package dao.impl;
 import dao.UserDao;
 import exception.DataProcessException;
 import java.util.List;
+import java.util.Optional;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,6 +16,15 @@ public class UserDaoImpl implements UserDao {
 
     public UserDaoImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+    }
+
+    @Override
+    public Optional<User> getById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return Optional.ofNullable(session.get(User.class, id));
+        } catch (Exception e) {
+            throw new DataProcessException("Can't get user by id: " + id + ".", e);
+        }
     }
 
     @Override

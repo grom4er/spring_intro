@@ -1,6 +1,7 @@
 package service.impl;
 
 import dao.UserDao;
+import exception.DataProcessException;
 import java.util.List;
 import model.User;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void add(User user) {
         userDao.add(user);
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userDao.getById(id).orElseThrow(
+                () -> new DataProcessException("Can't take user by id"));
     }
 
     @Override
